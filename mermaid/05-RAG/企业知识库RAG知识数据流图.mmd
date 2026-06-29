@@ -1,0 +1,19 @@
+flowchart TB
+  Source["文档来源<br/>企业制度 / 业务文档 / FAQ / 操作手册 / 系统数据"]
+  Ingest["文档接入<br/>文件上传 / API同步 / 定时采集"]
+  Process["文档处理<br/>解析 / 清洗去重 / Chunk分段 / 元数据提取"]
+  AuthTag["权限与标签<br/>组织权限 / 部门权限 / 角色权限 / 数据密级 / 业务标签"]
+  Index["向量化与索引<br/>Embedding / 向量数据库 / 关键词索引 / 元数据索引"]
+  Question["用户提问<br/>用户问题 / 身份认证 / 权限校验 / 查询改写"]
+  Retrieve["检索与重排<br/>向量召回 / 关键词召回 / 权限过滤 / Rerank"]
+  LLM["生成与反馈<br/>Prompt组装 / 大模型生成 / 引用来源 / 答案返回 / 用户反馈"]
+  Audit["审计与可观测性<br/>traceId / 检索日志 / 命中文档 / Token消耗 / 响应时间 / 质量评估"]
+
+  Source --> Ingest --> Process --> AuthTag --> Index
+  Question --> Retrieve
+  Index --> Retrieve
+  AuthTag -->|"服务端权限过滤<br/>不能交给大模型自行判断"| Retrieve
+  Retrieve --> LLM
+  LLM --> Audit
+  Retrieve --> Audit
+  Question --> Audit

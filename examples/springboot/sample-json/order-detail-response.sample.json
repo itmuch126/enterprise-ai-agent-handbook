@@ -1,0 +1,22 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_ORDER_DETAIL_001",
+  "status": "success",
+  "data": {
+    "orderId": "MOCK_ORDER_001",
+    "contractId": "MOCK_CONTRACT_001",
+    "paymentStatus": "PAID",
+    "fulfillmentStatus": "FULFILLED",
+    "invoiceStatus": "ISSUED",
+    "settlementStatus": "PARTIAL_SETTLED",
+    "items": [
+      {
+        "itemId": "MOCK_ITEM_001",
+        "productId": "MOCK_PRODUCT_001",
+        "productName": "测试商品A",
+        "quantity": 2,
+        "itemAmount": 500.00
+      }
+    ]
+  }
+}

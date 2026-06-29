@@ -1,0 +1,29 @@
+flowchart TB
+  Platform["企业AI平台能力底座"]
+  Entry["用户入口层<br/>Web / 移动端 / 企业IM / Open API"]
+  Agent["Agent能力层<br/>Agent Runtime / 任务规划 / 记忆 / 工具选择"]
+  Knowledge["知识能力层<br/>知识库 / RAG / 向量检索 / 引用溯源"]
+  Integration["工具与集成层<br/>MCP / 业务API / 文件服务 / 消息通知"]
+  Workflow["流程编排层<br/>Workflow / 审批 / 长任务 / 异步队列"]
+  Governance["规则与治理层<br/>规则引擎 / 权限中心 / 配置中心 / 审计"]
+  Model["模型与算力层<br/>模型网关 / LLM / Embedding / GPU资源"]
+  Ops["运维与可观测性层<br/>日志 / Trace / 指标 / 告警 / 成本"]
+
+  Platform --> Entry
+  Platform --> Agent
+  Platform --> Knowledge
+  Platform --> Integration
+  Platform --> Workflow
+  Platform --> Governance
+  Platform --> Model
+  Platform --> Ops
+
+  Entry --> Agent
+  Agent --> Knowledge
+  Agent --> Integration
+  Agent --> Workflow
+  Governance --> Agent
+  Governance --> Knowledge
+  Governance --> Integration
+  Agent --> Model
+  Ops -.观测与审计.-> Agent

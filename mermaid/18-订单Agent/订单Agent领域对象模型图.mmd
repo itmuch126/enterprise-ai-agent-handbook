@@ -1,0 +1,57 @@
+erDiagram
+  USER ||--o{ ORDER : places
+  ORDER ||--o{ ORDER_ITEM : contains
+  ORDER_ITEM }o--|| PRODUCT : references
+  ORDER ||--o| CONTRACT : bound_by
+  ORDER ||--o{ PAYMENT : paid_by
+  ORDER ||--o{ FULFILLMENT : fulfilled_by
+  FULFILLMENT ||--o{ LOGISTICS : ships
+  ORDER ||--o{ INVOICE : invoices
+  ORDER ||--o{ SETTLEMENT : settles
+  ORDER ||--o{ AUDIT_LOG : traced_by
+
+  USER {
+    string userId
+    string customerName
+  }
+  ORDER {
+    string orderId
+    string orderStatus
+    decimal orderAmount
+  }
+  ORDER_ITEM {
+    string itemId
+    int quantity
+  }
+  PRODUCT {
+    string productId
+    string productName
+  }
+  CONTRACT {
+    string contractId
+    string contractStatus
+  }
+  PAYMENT {
+    string paymentId
+    string paymentStatus
+  }
+  FULFILLMENT {
+    string fulfillmentId
+    string fulfillmentStatus
+  }
+  LOGISTICS {
+    string logisticsNo
+    string shipmentStatus
+  }
+  INVOICE {
+    string invoiceNo
+    string invoiceStatus
+  }
+  SETTLEMENT {
+    string settlementNo
+    string settlementStatus
+  }
+  AUDIT_LOG {
+    string traceId
+    string actionType
+  }

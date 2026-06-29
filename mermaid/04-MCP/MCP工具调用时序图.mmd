@@ -1,0 +1,27 @@
+sequenceDiagram
+  participant U as 用户
+  participant A as Agent Runtime
+  participant P as 权限中心
+  participant R as 规则引擎
+  participant M as MCP Server
+  participant T as 工具注册中心
+  participant B as 业务系统
+  participant L as 大模型
+  participant G as 审计日志
+  participant O as 可观测性平台
+
+  U->>A: 发起业务请求
+  A->>P: 校验用户与工具权限
+  P-->>A: 返回权限结果
+  A->>R: 执行工具选择与参数规则
+  R-->>A: 返回规则命中结果
+  A->>T: 查询可用工具Schema
+  T-->>A: 返回工具定义
+  A->>L: 生成工具调用参数
+  L-->>A: 返回结构化参数
+  A->>M: 调用MCP工具
+  M->>B: 调用业务系统接口
+  B-->>M: 返回业务结果
+  M-->>A: 返回工具执行结果
+  A->>G: 记录权限、规则、工具和结果
+  G->>O: 输出Trace与指标

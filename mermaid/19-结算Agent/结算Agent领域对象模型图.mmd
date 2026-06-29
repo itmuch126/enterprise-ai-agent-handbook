@@ -1,0 +1,52 @@
+erDiagram
+  SETTLEMENT ||--o{ SETTLEMENT_DETAIL : contains
+  SETTLEMENT_DETAIL }o--|| ORDER : from_order
+  SETTLEMENT ||--o| CONTRACT : based_on
+  SETTLEMENT ||--o| SETTLEMENT_RULE : applies
+  SETTLEMENT ||--o{ INVOICE : invoices
+  SETTLEMENT ||--o{ PAYMENT_RECORD : paid_by
+  SETTLEMENT ||--o{ RECONCILIATION : reconciles
+  SETTLEMENT ||--o{ APPROVAL : triggers
+  SETTLEMENT ||--o{ AUDIT_LOG : traced_by
+
+  SETTLEMENT {
+    string settlementNo
+    string settlementStatus
+    decimal settlementAmount
+  }
+  SETTLEMENT_DETAIL {
+    string detailId
+    decimal detailAmount
+  }
+  ORDER {
+    string orderId
+    string orderStatus
+  }
+  CONTRACT {
+    string contractId
+    string contractStatus
+  }
+  SETTLEMENT_RULE {
+    string ruleId
+    string ruleVersion
+  }
+  INVOICE {
+    string invoiceNo
+    string invoiceStatus
+  }
+  PAYMENT_RECORD {
+    string paymentId
+    string paymentStatus
+  }
+  RECONCILIATION {
+    string reconcileId
+    string diffStatus
+  }
+  APPROVAL {
+    string approvalNo
+    string approvalStatus
+  }
+  AUDIT_LOG {
+    string traceId
+    string actionType
+  }

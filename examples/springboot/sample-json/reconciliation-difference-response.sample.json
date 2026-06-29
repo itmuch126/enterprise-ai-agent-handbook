@@ -1,0 +1,13 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_RECON_001",
+  "status": "success",
+  "data": {
+    "reconciliationId": "MOCK_RECON_001",
+    "settlementNo": "MOCK_SETTLE_001",
+    "differenceAmount": 20.00,
+    "differenceReason": "示例差异：订单优惠金额与结算抵扣金额不一致",
+    "riskLevel": "MEDIUM",
+    "requiresApproval": true
+  }
+}

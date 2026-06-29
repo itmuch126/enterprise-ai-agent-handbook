@@ -1,0 +1,11 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_ERROR_001",
+  "status": "error",
+  "error": {
+    "code": "PERMISSION_DENIED",
+    "message": "当前用户无权访问该示例资源",
+    "retryable": false,
+    "suggestion": "请确认权限范围或发起授权申请"
+  }
+}

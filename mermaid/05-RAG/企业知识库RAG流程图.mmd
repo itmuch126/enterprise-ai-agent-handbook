@@ -1,0 +1,20 @@
+flowchart TB
+  Source["知识源文档"]
+  Govern["知识治理 / 元数据"]
+  Parse["解析清洗与切分"]
+  Index["向量索引 / 全文索引"]
+  User["用户问题"]
+  Auth["身份与数据权限校验"]
+  Retrieve["召回与重排"]
+  Rule["规则引擎适用范围判断"]
+  LLM["大模型生成回答"]
+  Cite["引用来源与适用范围"]
+  Audit["检索与回答审计"]
+  Obs["质量评估与可观测性"]
+
+  Source --> Govern --> Parse --> Index
+  User --> Auth --> Retrieve
+  Index --> Retrieve --> Rule --> LLM --> Cite
+  Auth --> Audit
+  Retrieve --> Audit
+  LLM --> Audit --> Obs

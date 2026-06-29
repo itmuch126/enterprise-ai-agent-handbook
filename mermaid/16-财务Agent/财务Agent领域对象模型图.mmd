@@ -1,0 +1,58 @@
+erDiagram
+  ACCOUNTING_ENTITY ||--o{ COST_CENTER : owns
+  COST_CENTER ||--o{ EXPENSE_ACCOUNT : uses
+  COST_CENTER ||--o{ BUDGET : controls
+  ACCOUNTING_ENTITY ||--o{ RECEIVABLE : records
+  ACCOUNTING_ENTITY ||--o{ PAYABLE : records
+  RECEIVABLE ||--o{ INVOICE : relates
+  PAYABLE ||--o{ INVOICE : relates
+  INVOICE ||--o{ VOUCHER : posts
+  RECEIVABLE ||--o{ RECONCILIATION : reconciles
+  PAYABLE ||--o{ RECONCILIATION : reconciles
+  RECONCILIATION ||--o{ APPROVAL : triggers
+  ACCOUNTING_ENTITY ||--o{ AUDIT_LOG : traced_by
+
+  ACCOUNTING_ENTITY {
+    string entityId
+    string entityName
+  }
+  COST_CENTER {
+    string costCenterId
+    string costCenterName
+  }
+  EXPENSE_ACCOUNT {
+    string accountCode
+    string accountName
+  }
+  BUDGET {
+    string budgetId
+    decimal budgetAmount
+  }
+  RECEIVABLE {
+    string receivableId
+    decimal receivableAmount
+  }
+  PAYABLE {
+    string payableId
+    decimal payableAmount
+  }
+  INVOICE {
+    string invoiceNo
+    string invoiceStatus
+  }
+  VOUCHER {
+    string voucherNo
+    string postingStatus
+  }
+  RECONCILIATION {
+    string reconcileId
+    decimal diffAmount
+  }
+  APPROVAL {
+    string approvalNo
+    string approvalStatus
+  }
+  AUDIT_LOG {
+    string traceId
+    string actionType
+  }

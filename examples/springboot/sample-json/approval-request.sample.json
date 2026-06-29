@@ -1,0 +1,13 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_APPROVAL_001",
+  "status": "pending",
+  "data": {
+    "approvalType": "SETTLEMENT_DIFFERENCE_REVIEW",
+    "resourceType": "SETTLEMENT",
+    "resourceId": "MOCK_SETTLE_001",
+    "applicantUserId": "mock_user_001",
+    "reason": "示例申请：结算差异超阈值，需要人工复核",
+    "riskLevel": "MEDIUM"
+  }
+}

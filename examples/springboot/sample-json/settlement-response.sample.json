@@ -1,0 +1,14 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_SETTLE_001",
+  "status": "success",
+  "data": {
+    "settlementNo": "MOCK_SETTLE_001",
+    "orderId": "MOCK_ORDER_001",
+    "customerId": "mock_customer_001",
+    "settlementPeriod": "2026-06",
+    "settlementAmount": 980.00,
+    "differenceAmount": 20.00,
+    "settlementStatus": "DIFFERENCE_PENDING"
+  }
+}

@@ -1,0 +1,27 @@
+sequenceDiagram
+  participant U as 用户
+  participant A as 业务协同 Agent
+  participant P as 权限中心
+  participant O as 订单系统
+  participant S as 结算系统
+  participant F as 财务系统
+  participant R as 规则引擎
+  participant W as Workflow
+  participant L as 审计日志
+  participant M as 可观测性平台
+
+  U->>A: 提交客户订单对账问题
+  A->>P: 校验用户、订单、结算、财务权限
+  P-->>A: 返回权限结果
+  A->>O: 查询订单与履约状态
+  A->>S: 查询结算单与结算规则
+  A->>F: 查询应收应付、发票、凭证
+  A->>R: 执行差异、风险、审批规则
+  R-->>A: 返回规则命中结果
+  alt 高风险或需处理
+    A->>W: 发起人工确认或审批
+    W-->>A: 返回审批单号
+  end
+  A->>L: 写入权限、规则、工具调用审计
+  L->>M: 上报链路指标
+  A-->>U: 返回差异说明与处理建议

@@ -1,0 +1,27 @@
+sequenceDiagram
+  participant U as 用户
+  participant A as 财务 Agent
+  participant P as 权限中心
+  participant F as 财务系统
+  participant I as 发票系统
+  participant V as 凭证系统
+  participant R as 规则引擎
+  participant W as Workflow
+  participant L as 审计日志
+  participant M as 可观测性平台
+
+  U->>A: 请求财务对账差异分析
+  A->>P: 校验财务、发票、凭证权限
+  P-->>A: 返回权限和脱敏策略
+  A->>F: 查询应收应付与收付款
+  A->>I: 查询发票状态
+  A->>V: 查询凭证状态
+  A->>R: 执行对账差异和风险规则
+  R-->>A: 返回差异分类与风险等级
+  alt 差异超阈值
+    A->>W: 发起财务复核审批
+    W-->>A: 返回审批状态
+  end
+  A->>L: 记录审计字段与规则命中
+  L->>M: 上报耗时和异常指标
+  A-->>U: 返回对账差异说明

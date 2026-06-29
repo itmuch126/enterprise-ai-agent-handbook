@@ -1,0 +1,19 @@
+flowchart LR
+  User["用户识别"]
+  Auth["权限校验"]
+  Order["订单查询与状态判断"]
+  Fulfill["履约与异常分析"]
+  Rule["规则引擎匹配结算规则"]
+  Settlement["结算金额核算"]
+  Finance["应收应付确认"]
+  Invoice["发票与凭证关联"]
+  Reconcile["对账与异常处理"]
+  Confirm["人工确认 / 审批"]
+  Audit["审计留痕"]
+  Obs["链路追踪与可观测性"]
+
+  User --> Auth --> Order --> Fulfill --> Rule --> Settlement
+  Settlement --> Finance --> Invoice --> Reconcile --> Confirm
+  Rule --> Audit
+  Reconcile --> Audit
+  Confirm --> Audit --> Obs

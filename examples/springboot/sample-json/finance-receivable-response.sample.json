@@ -1,0 +1,14 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_AR_001",
+  "status": "success",
+  "data": {
+    "receivableId": "MOCK_AR_001",
+    "customerId": "mock_customer_001",
+    "receivableAmount": 980.00,
+    "receivedAmount": 500.00,
+    "unsettledAmount": 480.00,
+    "agingDays": 15,
+    "currency": "CNY"
+  }
+}

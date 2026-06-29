@@ -1,0 +1,60 @@
+erDiagram
+  USER ||--o{ ORDER : places
+  ORDER ||--o{ ORDER_ITEM : contains
+  ORDER ||--o| CONTRACT : references
+  ORDER ||--o{ SETTLEMENT : settles
+  SETTLEMENT ||--o{ INVOICE : invoices
+  SETTLEMENT ||--o{ AR_AP : confirms
+  AR_AP ||--o{ VOUCHER : posts
+  SETTLEMENT ||--o{ RECONCILIATION : reconciles
+  RECONCILIATION ||--o{ APPROVAL : triggers
+  USER ||--o{ AUDIT_LOG : operates
+  ORDER ||--o{ AUDIT_LOG : traced_by
+
+  USER {
+    string userId
+    string customerName
+    string status
+  }
+  ORDER {
+    string orderId
+    string orderStatus
+    decimal orderAmount
+  }
+  ORDER_ITEM {
+    string itemId
+    string productName
+    decimal itemAmount
+  }
+  CONTRACT {
+    string contractId
+    string contractStatus
+  }
+  SETTLEMENT {
+    string settlementNo
+    decimal settlementAmount
+  }
+  INVOICE {
+    string invoiceNo
+    string invoiceStatus
+  }
+  AR_AP {
+    string arapId
+    decimal amount
+  }
+  VOUCHER {
+    string voucherNo
+    string postingStatus
+  }
+  RECONCILIATION {
+    string reconcileId
+    string diffStatus
+  }
+  APPROVAL {
+    string approvalNo
+    string approvalStatus
+  }
+  AUDIT_LOG {
+    string traceId
+    string actionType
+  }

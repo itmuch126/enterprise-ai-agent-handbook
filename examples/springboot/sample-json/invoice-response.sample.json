@@ -1,0 +1,14 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_INVOICE_001",
+  "status": "success",
+  "data": {
+    "invoiceId": "MOCK_INVOICE_001",
+    "invoiceNo": "MOCK_INVOICE_001",
+    "orderId": "MOCK_ORDER_001",
+    "invoiceAmount": 980.00,
+    "taxAmount": 58.80,
+    "invoiceStatus": "ISSUED",
+    "maskedBuyerTaxNo": "TAX****0001"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_ORDER_001",
+  "status": "success",
+  "data": {
+    "orderId": "MOCK_ORDER_001",
+    "customerId": "mock_customer_001",
+    "orderType": "STANDARD",
+    "orderStatus": "COMPLETED",
+    "orderAmount": 1000.00,
+    "currency": "CNY",
+    "riskLevel": "LOW"
+  }
+}

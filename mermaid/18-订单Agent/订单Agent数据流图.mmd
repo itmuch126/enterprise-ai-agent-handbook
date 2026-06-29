@@ -1,0 +1,42 @@
+flowchart TB
+  User["用户入口<br/>用户问题 / 操作请求"]
+  Agent["订单 Agent<br/>意图识别 / 查询编排 / 异常识别"]
+  Perm["身份认证 / 权限中心<br/>菜单权限 / 数据权限 / 导出权限"]
+  Rule["规则引擎<br/>状态规则 / 金额规则 / 风险规则 / 审批条件"]
+  OrderSys["订单系统<br/>订单查询 / 状态跟踪"]
+  UserSys["用户系统<br/>客户信息 / 用户状态"]
+  ContractSys["合同系统<br/>合同条款 / 履约约束"]
+  PaySys["支付系统<br/>支付状态 / 退款记录"]
+  FulfillSys["履约 / 物流系统<br/>履约进度 / 物流状态"]
+  InvoiceSys["发票系统<br/>发票状态 / 开票信息"]
+  SettlementSys["结算系统<br/>结算状态 / 结算单"]
+  LLM["大模型<br/>归纳说明 / 风险解释 / 回复生成"]
+  Confirm["人工确认 / 审批<br/>改金额 / 取消 / 退款 / 改结算状态 / 批量导出"]
+  Audit["审计日志<br/>traceId / 权限结果 / 规则命中 / 数据来源"]
+  Obs["可观测性平台<br/>响应时间 / 超时 / 降级 / 告警"]
+
+  User -->|"用户问题"| Agent
+  Agent -->|"权限校验"| Perm
+  Perm -->|"授权范围"| Agent
+  Agent -->|"订单查询"| OrderSys
+  OrderSys --> UserSys
+  OrderSys --> ContractSys
+  OrderSys --> PaySys
+  OrderSys --> FulfillSys
+  OrderSys --> InvoiceSys
+  OrderSys --> SettlementSys
+  UserSys --> Rule
+  ContractSys --> Rule
+  PaySys --> Rule
+  FulfillSys --> Rule
+  InvoiceSys --> Rule
+  SettlementSys --> Rule
+  Rule -->|"异常识别 / 高风险判断"| Agent
+  Agent --> LLM
+  Rule -->|"高风险操作必须确认或审批"| Confirm
+  Confirm --> Audit
+  Agent --> Audit
+  Audit --> Obs
+  Agent -->|"结果返回"| User
+  OrderSys -.超时或不可用：缓存摘要 / 降级提示 / 转人工.-> Agent
+  SettlementSys -.超时或不可用：跳过自动操作并审计.-> Agent

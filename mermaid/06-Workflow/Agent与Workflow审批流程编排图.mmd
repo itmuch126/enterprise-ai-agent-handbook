@@ -1,0 +1,19 @@
+flowchart LR
+  User["用户自然语言申请"]
+  Agent["Agent Runtime"]
+  Extract["表单抽取与缺失追问"]
+  Auth["权限校验"]
+  Rule["规则引擎审批路由"]
+  Preview["结构化预览"]
+  Confirm["用户确认"]
+  Workflow["Workflow流程实例"]
+  Approver["审批人处理"]
+  Biz["业务系统落库"]
+  Audit["审计日志"]
+  Obs["流程可观测性"]
+
+  User --> Agent --> Extract --> Auth --> Rule --> Preview --> Confirm
+  Confirm --> Workflow --> Approver --> Biz
+  Rule --> Audit
+  Workflow --> Audit
+  Biz --> Audit --> Obs

@@ -1,0 +1,34 @@
+flowchart TB
+  OrderAmount["订单金额"]
+  Contract["合同条款"]
+  RuleConfig["结算规则"]
+  Period["结算周期"]
+  Detail["商品 / 服务明细"]
+  Discount["优惠金额"]
+  Adjustment["调整金额"]
+  Tax["税额计算"]
+  RuleEngine["规则引擎<br/>规则版本 / 阈值 / 风险判断"]
+  Receivable["应结金额"]
+  Settled["已结金额"]
+  Unsettled["未结金额"]
+  Invoice["发票状态"]
+  Payment["收付款状态"]
+  Diff["对账差异"]
+  Approval["人工确认 / 审批"]
+  Audit["审计日志<br/>数据来源 / 计算过程摘要 / 规则版本"]
+  Result["最终结算结果"]
+
+  OrderAmount --> RuleEngine
+  Detail --> RuleEngine
+  Contract --> RuleEngine
+  RuleConfig --> RuleEngine
+  Period --> RuleEngine
+  Discount -->|"抵扣"| RuleEngine
+  Adjustment -->|"调增 / 调减"| RuleEngine
+  Tax -->|"税额"| RuleEngine
+  RuleEngine -->|"订单金额 + 明细 + 合同 + 规则 + 周期 - 优惠 ± 调整 + 税额"| Receivable
+  Receivable --> Settled --> Unsettled --> Invoice --> Payment --> Diff
+  Diff -->|"差异超阈值 / 重复结算风险 / 调整金额"| Approval
+  Approval --> Result
+  Result --> Audit
+  RuleEngine --> Audit

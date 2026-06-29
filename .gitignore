@@ -1,0 +1,45 @@
+# Git internals
+.git/
+
+# Node / frontend
+node_modules/
+dist/
+build/
+.vite/
+.next/
+.nuxt/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.venv/
+venv/
+
+# OS / editor
+.DS_Store
+Thumbs.db
+desktop.ini
+.idea/
+.vscode/
+
+# Logs / temp / cache
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+.cache/
+
+# Local env / secrets
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Office temporary files
+~$*

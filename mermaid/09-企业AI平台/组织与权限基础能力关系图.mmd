@@ -1,0 +1,30 @@
+flowchart TB
+  Org["组织"]
+  Dept["部门"]
+  Person["人员 / 账号"]
+  Position["岗位"]
+  Role["角色"]
+  Menu["菜单权限"]
+  Function["功能权限"]
+  Data["数据权限"]
+  Tool["接口 / 工具调用权限"]
+  Agent["Agent使用权限"]
+  RAG["RAG知识访问权限"]
+  Workflow["Workflow审批权限"]
+  Rule["规则引擎权限裁决"]
+  Audit["审计日志"]
+
+  Org --> Dept --> Person
+  Person --> Position --> Role
+  Role --> Menu
+  Role --> Function
+  Role --> Data
+  Role --> Tool
+  Role --> Agent
+  Data --> RAG
+  Function --> Workflow
+  Tool --> Rule
+  Agent --> Rule
+  RAG --> Rule
+  Workflow --> Rule
+  Rule --> Audit

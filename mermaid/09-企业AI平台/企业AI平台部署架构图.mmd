@@ -1,0 +1,42 @@
+flowchart TB
+  subgraph DMZ["DMZ / 网关边界"]
+    Entry["用户入口"]
+    Gateway["LB / API Gateway"]
+    SSO["SSO / 统一认证"]
+  end
+
+  subgraph App["应用服务区"]
+    AgentSvc["Agent Service"]
+    Runtime["Agent Runtime"]
+    Workflow["Workflow Service"]
+    MCP["MCP Server"]
+    RAG["RAG Service"]
+  end
+
+  subgraph Data["数据服务区"]
+    DataGuard["Vector DB / Rule Engine / Permission Center"]
+    Audit["Audit Log"]
+  end
+
+  subgraph Model["模型服务区"]
+    ModelGW["Model Gateway"]
+    LLM["LLM Inference"]
+  end
+
+  subgraph Ops["运维监控区"]
+    Obs["Observability"]
+  end
+
+  subgraph Biz["业务系统集成区"]
+    BizSys["HR / ERP / OA / 财务等业务系统"]
+  end
+
+  Entry --> Gateway --> SSO --> AgentSvc --> Runtime
+  Runtime --> Workflow
+  Runtime --> MCP --> BizSys
+  Runtime --> RAG --> DataGuard
+  Runtime --> DataGuard
+  Runtime --> ModelGW --> LLM
+  Runtime --> Audit --> Obs
+  Gateway --> Obs
+  BizSys --> Audit

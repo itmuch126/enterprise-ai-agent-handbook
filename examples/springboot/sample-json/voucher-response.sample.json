@@ -1,0 +1,12 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_VOUCHER_001",
+  "status": "success",
+  "data": {
+    "voucherId": "MOCK_VOUCHER_001",
+    "voucherNo": "MOCK_VOUCHER_001",
+    "postingStatus": "POSTED",
+    "postingDate": "2026-06-29",
+    "accountingEntity": "mock_entity_001"
+  }
+}

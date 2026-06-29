@@ -1,0 +1,29 @@
+sequenceDiagram
+  participant U as 用户
+  participant A as 结算 Agent
+  participant P as 权限中心
+  participant O as 订单系统
+  participant C as 合同系统
+  participant S as 结算系统
+  participant F as 财务系统
+  participant R as 规则引擎
+  participant W as Workflow
+  participant L as 审计日志
+  participant M as 可观测性平台
+
+  U->>A: 请求结算金额差异识别
+  A->>P: 校验结算、订单、财务权限
+  P-->>A: 返回权限结果
+  A->>S: 查询结算单和明细
+  A->>O: 查询订单状态和金额
+  A->>C: 查询合同规则和状态
+  A->>F: 查询收付款和凭证状态
+  A->>R: 执行金额差异和准入规则
+  R-->>A: 返回规则命中与差异原因
+  alt 需要调整或审批
+    A->>W: 发起结算复核审批
+    W-->>A: 返回审批单号
+  end
+  A->>L: 记录规则、权限、差异审计
+  L->>M: 上报性能和异常指标
+  A-->>U: 返回差异说明和处理建议

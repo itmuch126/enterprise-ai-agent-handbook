@@ -1,0 +1,20 @@
+flowchart LR
+  Dev["工具开发者"]
+  MCP["MCP Server"]
+  Registry["工具注册中心"]
+  Perm["权限中心"]
+  Rule["规则引擎"]
+  Gateway["API网关"]
+  Biz["业务系统"]
+  Audit["审计日志"]
+  Obs["可观测性平台"]
+
+  Dev -->|"提交工具定义与Schema"| MCP
+  MCP -->|"注册工具元数据"| Registry
+  Registry -->|"绑定使用权限"| Perm
+  Registry -->|"绑定路由与业务规则"| Rule
+  Registry -->|"发布工具入口"| Gateway
+  Gateway --> Biz
+  Registry --> Audit
+  MCP --> Audit
+  Audit --> Obs

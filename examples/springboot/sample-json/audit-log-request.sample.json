@@ -1,0 +1,23 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_AUDIT_001",
+  "status": "pending",
+  "data": {
+    "userId": "mock_user_001",
+    "userName": "测试用户",
+    "departmentId": "mock_dept_001",
+    "roleCode": "mock_role_finance",
+    "agentCode": "biz_collab_agent",
+    "actionType": "RECONCILIATION_ANALYSIS",
+    "resourceType": "ORDER",
+    "resourceId": "MOCK_ORDER_001",
+    "ruleId": "BIZ-COLLAB-RULE-008",
+    "permissionResult": "ALLOW",
+    "riskLevel": "MEDIUM",
+    "inputSummary": "示例输入摘要",
+    "outputSummary": "示例输出摘要",
+    "confirmUser": "mock_user_001",
+    "approveUser": "mock_manager_001",
+    "createdAt": "2026-06-29T10:00:00+08:00"
+  }
+}

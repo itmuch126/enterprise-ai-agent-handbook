@@ -1,0 +1,25 @@
+flowchart TB
+  User["用户 / 业务入口"]
+  Portal["AI工作台 / API入口"]
+  IAM["IAM与权限中心"]
+  Agent["Agent Runtime"]
+  Rule["规则引擎 / 配置中心"]
+  Model["模型网关"]
+  RAG["知识中心 / RAG"]
+  Tools["MCP工具中心"]
+  Workflow["Workflow审批与长任务"]
+  Biz["HR / ERP / OA / 财务等业务系统"]
+  Audit["审计日志"]
+  Obs["可观测性平台"]
+
+  User --> Portal --> IAM --> Agent
+  Agent --> Rule
+  Agent --> Model
+  Agent --> RAG
+  Agent --> Tools --> Biz
+  Agent --> Workflow --> Biz
+  Rule --> Audit
+  Agent --> Audit
+  Tools --> Audit
+  Workflow --> Audit
+  Audit --> Obs

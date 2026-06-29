@@ -1,0 +1,14 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_USER_001",
+  "status": "success",
+  "data": {
+    "userId": "mock_user_001",
+    "customerId": "mock_customer_001",
+    "customerName": "测试客户A",
+    "maskedMobile": "138****0000",
+    "userStatus": "ACTIVE",
+    "riskLevel": "LOW",
+    "departmentId": "mock_dept_001"
+  }
+}

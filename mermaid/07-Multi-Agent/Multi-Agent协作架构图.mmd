@@ -1,0 +1,29 @@
+flowchart TB
+  User["用户"]
+  Coordinator["主控Agent"]
+  Analyst["业务分析Agent"]
+  Query["数据查询Agent"]
+  RuleAgent["规则校验Agent"]
+  Finance["财务Agent"]
+  Settlement["结算Agent"]
+  Report["报告生成Agent"]
+  Rule["规则引擎"]
+  Perm["权限中心"]
+  Workflow["Workflow"]
+  Audit["审计日志"]
+  Obs["可观测性平台"]
+
+  User --> Coordinator
+  Coordinator --> Perm
+  Coordinator --> Analyst
+  Coordinator --> Query
+  Coordinator --> RuleAgent
+  Analyst --> Report
+  Query --> Finance
+  Query --> Settlement
+  RuleAgent --> Rule
+  Coordinator --> Workflow
+  Finance --> Audit
+  Settlement --> Audit
+  Report --> Audit
+  Audit --> Obs

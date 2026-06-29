@@ -1,0 +1,24 @@
+sequenceDiagram
+  participant U as 用户
+  participant A as 订单 Agent
+  participant P as 权限中心
+  participant O as 订单系统
+  participant US as 用户系统
+  participant C as 合同系统
+  participant Pay as 支付系统
+  participant R as 规则引擎
+  participant L as 审计日志
+  participant M as 可观测性平台
+
+  U->>A: 提交订单异常查询
+  A->>P: 校验订单、用户、金额权限
+  P-->>A: 返回权限结果
+  A->>O: 查询订单详情与状态
+  A->>US: 查询用户状态
+  A->>C: 查询合同状态
+  A->>Pay: 查询支付与退款状态
+  A->>R: 执行订单状态、风险、权限规则
+  R-->>A: 返回异常分类和处理建议
+  A->>L: 写入审计日志
+  L->>M: 上报链路追踪
+  A-->>U: 返回异常说明和下一步建议

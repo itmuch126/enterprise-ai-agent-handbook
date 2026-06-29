@@ -1,0 +1,12 @@
+{
+  "traceId": "TRACE_MOCK_001",
+  "requestId": "REQ_SETTLE_RULE_001",
+  "status": "success",
+  "data": {
+    "ruleId": "SETTLE-RULE-001",
+    "ruleName": "结算周期规则",
+    "ruleVersion": "mock_v1",
+    "description": "示例规则：订单完成后进入当月结算周期",
+    "requiresManualConfirm": false
+  }
+}

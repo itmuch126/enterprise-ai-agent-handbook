@@ -1,0 +1,46 @@
+flowchart TB
+  subgraph UserLayer["用户交互层"]
+    User["用户请求<br/>Web / IM / API / 业务入口"]
+    Gateway["统一入口<br/>API Gateway / SSO入口"]
+  end
+
+  subgraph AILayer["AI能力层（Agent / RAG / MCP / Workflow）"]
+    Agent["Agent Runtime"]
+    Intent["意图识别"]
+    RAG["RAG 检索"]
+    MCP["MCP 工具调用"]
+    Workflow["Workflow 编排"]
+  end
+
+  subgraph GovernanceLayer["治理控制层（独立于AI执行层）"]
+    IAM["权限校验 IAM<br/>前置校验"]
+    Rule["规则引擎<br/>优先于大模型"]
+    Audit["审计日志<br/>所有调用留痕"]
+    Obs["可观测性<br/>Trace / 指标 / 告警"]
+  end
+
+  subgraph ModelLayer["模型与算力层"]
+    ModelGW["模型网关"]
+    LLM["大模型推理 LLM"]
+    Embed["Embedding / Rerank"]
+  end
+
+  subgraph BizLayer["企业业务系统层"]
+    Biz["订单 / 财务 / 结算 / 用户系统"]
+  end
+
+  User --> Gateway --> Agent --> Intent
+  Intent --> IAM --> Rule
+  Rule --> RAG
+  RAG --> Embed
+  Rule --> MCP
+  MCP --> Workflow
+  Workflow --> ModelGW --> LLM
+  LLM --> Biz
+  Biz --> Audit
+  Agent -.审计.-> Audit
+  RAG -.审计.-> Audit
+  MCP -.审计.-> Audit
+  Workflow -.审计.-> Audit
+  ModelGW -.审计.-> Audit
+  Audit --> Obs

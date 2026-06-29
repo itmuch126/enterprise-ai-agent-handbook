@@ -1,0 +1,24 @@
+flowchart LR
+  User["用户请求"]
+  Auth["身份认证与权限上下文"]
+  Runtime["Agent Runtime"]
+  Intent["意图识别 / 参数抽取"]
+  Rule["规则引擎确定性判断"]
+  RAG["RAG知识检索"]
+  Tool["工具调用 / MCP"]
+  Biz["业务系统"]
+  Confirm["用户确认 / 审批"]
+  Model["大模型生成与归纳"]
+  Audit["审计日志"]
+  Trace["链路追踪与指标"]
+
+  User --> Auth --> Runtime --> Intent
+  Intent --> Rule
+  Rule --> RAG
+  Rule --> Tool --> Biz
+  Rule --> Confirm
+  RAG --> Model
+  Tool --> Model
+  Confirm --> Model
+  Model --> Audit --> Trace
+  Runtime --> Trace
