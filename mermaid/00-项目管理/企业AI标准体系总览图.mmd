@@ -1,0 +1,24 @@
+flowchart TB
+  Standard["企业AI标准体系<br/>v2.0 收敛版本"]
+  Arch["架构标准层<br/>分层解耦 / 单总控图 / 模块边界"]
+  Behavior["行为标准层<br/>Agent / Workflow / 人工确认 / 高风险控制"]
+  Data["数据标准层<br/>知识来源 / 元数据 / 权限标签 / 数据质量"]
+  Governance["治理标准层<br/>IAM / 规则引擎 / 审计 / 可观测性"]
+  Engineering["工程标准层<br/>API契约 / MCP调用 / 错误码 / 性能"]
+  Landing["企业AI平台落地层<br/>Agent / MCP / RAG / Workflow / 业务协同"]
+
+  Standard -->|"定义与约束"| Arch
+  Standard -->|"定义与约束"| Behavior
+  Standard -->|"定义与约束"| Data
+  Standard -->|"定义与约束"| Governance
+  Standard -->|"定义与约束"| Engineering
+
+  Arch -->|"约束模块边界"| Landing
+  Behavior -->|"约束执行行为"| Landing
+  Data -->|"约束RAG与知识库"| Landing
+  Governance -->|"控制执行层"| Landing
+  Engineering -->|"约束API与MCP调用"| Landing
+
+  Governance -.权限前置 / 规则优先.-> Behavior
+  Data -.数据权限 / 元数据.-> Landing
+  Engineering -.接口契约 / Trace.-> Landing
